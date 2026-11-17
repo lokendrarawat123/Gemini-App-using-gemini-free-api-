@@ -1,7 +1,8 @@
 import os 
 
 from google import genai
-gemini_api_key=os.getenv('GEMINI_API_KEY')
+gemini_api_key = st.secrets.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
+
 client =genai.Client(api_key=gemini_api_key)
 def gemini(prompt):
     interaction=client.interactions.create(
